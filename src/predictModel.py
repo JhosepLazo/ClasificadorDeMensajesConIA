@@ -4,6 +4,15 @@ import joblib
 #Cargamos el modelo entrenado desde el archivo
 rutaModelo = "modeloClasificador.pkl"
 
+#Diccionario para mostrar nombres más amigables de las categorías
+nombresCategorias = {
+    "stock": "Consulta sobre stock",
+    "reclamo": "Reclamo o queja",
+    "cambio_devolucion": "Cambio o devolución",
+    "consulta_general": "Consulta general",
+    "pedido_pendiente": "Pedido pendiente",
+}
+
 #Cargamos el modelo entrenado desde el archivo
 modelo = joblib.load(rutaModelo)
 
@@ -28,5 +37,11 @@ while True:
     #Usamos el modelo para predecir la categoría del mensaje
     categoriaPredicha = modelo.predict([mensajePrueba])
 
+    #Obtenemos el codigo de la categoría predicha 
+    codigoCategoria = categoriaPredicha[0]
+
+    #Obtenemos el nombre amigable de la categoría usando el diccionario
+    nombreCategoria = nombresCategorias.get(codigoCategoria, "Categoría desconocida")
+
     #Mostramos el mensaje y la categoría predicha
-    print(f"Mensaje: {mensajePrueba} - Categoría Predicha: {categoriaPredicha[0]}")
+    print(f"Mensaje: {mensajePrueba} - Categoría Predicha: {nombreCategoria}")
