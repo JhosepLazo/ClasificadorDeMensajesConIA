@@ -21,6 +21,15 @@ conteoCategorias = datosMensajes['categoria'].value_counts()
 print("\nCantidad de mensajes por categorías:")
 print(conteoCategorias)
 
+#Separamos los mensajes que serán lso datos de entrada del modelo
+mensajes = datosMensajes['mensaje']
 
+#Separamos las categorías que serán las respuestas correctas del modelo
+categorias = datosMensajes['categoria']
+
+#mostramos los mensajes y sus categorías correspondientes para verificar la seaparación
+print("\nMensajes y sus Categorías:")
+for i in range(10):
+    print(f"Mensaje: {mensajes[i]} - Categoría: {categorias[i]}")
 
 
