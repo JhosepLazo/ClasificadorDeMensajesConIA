@@ -8,6 +8,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 #Importamos LogisticRegression como clasificador inicial
 from sklearn.linear_model import LogisticRegression
+#Importamos metricas para evaluar que tan bien esta clasificando el modelo
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 
 #Guardamos en una variable la ruta donde se encuentra nuestro dataset
@@ -83,6 +85,19 @@ print("\nPredicciones para los primeros mensajes de prueba:")
 for i in range(10):
     print(f"Mensaje: {xPrueba.iloc[i]} - Categoría Real: {yPrueba.iloc[i]} - Categoría Predicha: {predicciones[i]}\n")
 
+#Calculamos la exactitud del modelo 
+exactitud = accuracy_score(yPrueba, predicciones)
+
+#Mostramos el % de exactitud del modelo
+print(f"\nExactitud del modelo: {exactitud:.2f}")
+
+#Mostramos métricas detalladas por categoría
+print("\nReporte de clasificación por categoría:")
+print(classification_report(yPrueba, predicciones))
+
+#Mostramos la matriz de confusión para visualizar aciertos y errores del modelo
+print("\nMatriz de confusión:")
+print(confusion_matrix(yPrueba, predicciones))
 
 
 
