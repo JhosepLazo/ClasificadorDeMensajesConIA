@@ -1,9 +1,13 @@
 #Importamos pandas para poder leer y trabajar con archivos csv
 import pandas as pd 
-
 #Importamos train_test_split para dividir nuestro dataset en conjuntos de entrenamiento y prueba
 from sklearn.model_selection import train_test_split
-
+#Importamos Pipeline para unir varios pasos del modelo en una sola estructura
+from sklearn.pipeline import Pipeline
+#Importamos TfidfVectorizer para convertir texto en numeros
+from sklearn.feature_extraction.text import TfidfVectorizer
+#Importamos LogisticRegression como clasificador inicial
+from sklearn.linear_model import LogisticRegression
 #Guardamos en una variable la ruta donde se encuentra nuestro dataset
 rutaDataset = "data/mensajes_clientes.csv"
 
