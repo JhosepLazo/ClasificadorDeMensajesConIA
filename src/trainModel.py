@@ -8,6 +8,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 #Importamos LogisticRegression como clasificador inicial
 from sklearn.linear_model import LogisticRegression
+
+
 #Guardamos en una variable la ruta donde se encuentra nuestro dataset
 rutaDataset = "data/mensajes_clientes.csv"
 
@@ -50,3 +52,45 @@ xEntrenamiento, xPrueba, yEntrenamiento, yPrueba = train_test_split(
 #Mostramos cuantos mensajes quedaron para entrenamiento y cuantos para prueba 
 print(f"\nCantidad de mensajes para entrenamiento: \n{len(xEntrenamiento)}")
 print(f"\nCantidad de mensajes para prueba: \n{len(xPrueba)}")
+
+#Creamos un pipeline del modelo que incluye TfidfVectorizer para convertir texto en números y LogisticRegression como clasificador  
+modelo = Pipeline([
+    #Primer paso: Convertir los mensajes de texto en números utilizando TF-IDF
+    ('tfidf', TfidfVectorizer(
+        lowercase = True, #Convertir todo el texto a minúsculas para evitar duplicados
+        strip_accents = 'unicode', #Eliminar acentos para mejorar la consistencia
+        ngram_range = (1, 2), #Considerar tanto palabras individuales como pares de palabras para capturar más contexto
+        max_features = 1000 #Limitar el número de características para evitar sobreajuste        
+    )),
+
+    #Segundo paso: Clasificar los mensajes utilizando regresión logística
+    ('clasificador', LogisticRegression(
+        max_iter = 1000, #Aumentar el número de iteraciones para asegurar la convergencia del modelo
+    ))
+])
+
+#Entrenamos el modelo usando los mensajes y categorías de entrenamiento
+modelo.fit(xEntrenamiento, yEntrenamiento)
+
+#Mostramos un mensaje para confirmar que el entrenamiento terminó
+print("\nModelo entrenado correctamente.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
