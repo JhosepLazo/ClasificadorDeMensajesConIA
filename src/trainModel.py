@@ -10,10 +10,14 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 #Importamos metricas para evaluar que tan bien esta clasificando el modelo
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-
+#Importamos joblib para guardar el modelo entrenado en un archivo
+import joblib
 
 #Guardamos en una variable la ruta donde se encuentra nuestro dataset
 rutaDataset = "data/mensajes_clientes.csv"
+
+#Guardamos en una variable la ruta donde se guardara el modelo entrenado
+rutaModelo = "modeloClasificador.pkl"
 
 #Leemos el dataset utilizando pandas y lo guardamos en una tabla
 datosMensajes = pd.read_csv(rutaDataset)
@@ -98,6 +102,12 @@ print(classification_report(yPrueba, predicciones))
 #Mostramos la matriz de confusión para visualizar aciertos y errores del modelo
 print("\nMatriz de confusión:")
 print(confusion_matrix(yPrueba, predicciones))
+
+#Guardamos el modelo entrenado para usarlo despues sin volver a entrenar
+joblib.dump(modelo, rutaModelo)
+
+#mostramos un mensaje para confirmar que el modelo se guardó correctamente
+print(f"\nModelo guardado correctamente en: {rutaModelo}")
 
 
 
