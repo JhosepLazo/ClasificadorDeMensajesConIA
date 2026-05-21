@@ -1,6 +1,9 @@
 #Importamos pandas para poder leer y trabajar con archivos csv
 import pandas as pd 
 
+#Importamos train_test_split para dividir nuestro dataset en conjuntos de entrenamiento y prueba
+from sklearn.model_selection import train_test_split
+
 #Guardamos en una variable la ruta donde se encuentra nuestro dataset
 rutaDataset = "data/mensajes_clientes.csv"
 
@@ -18,8 +21,7 @@ print(datosMensajes.columns)
 
 #Contamos cuantas veces aparece cada categoría en el dataset
 conteoCategorias = datosMensajes['categoria'].value_counts()
-print("\nCantidad de mensajes por categorías:")
-print(conteoCategorias)
+print(f"\nCantidad de mensajes por categorías: \n{conteoCategorias}")
 
 #Separamos los mensajes que serán lso datos de entrada del modelo
 mensajes = datosMensajes['mensaje']
@@ -32,4 +34,15 @@ print("\nMensajes y sus Categorías:")
 for i in range(10):
     print(f"Mensaje: {mensajes[i]} - Categoría: {categorias[i]}")
 
+#Dividimos el dataset en conjuntos de entrenamiento y prueba utilizando train_test_split
+xEntrenamiento, xPrueba, yEntrenamiento, yPrueba = train_test_split(
+    mensajes, #Datos de entrada para el modelo 
+    categorias, #Respuestas correctas para el modelo   
+    test_size = 0.2, #El 20% para pruebas y el 80% para entrenamiento    
+    random_state = 42, #Semilla para garantizar que la división sea escalable
+    stratify = categorias #Estratificación para asegurar que la proporción de categorías se mantenga en ambos conjuntos
+)
 
+#Mostramos cuantos mensajes quedaron para entrenamiento y cuantos para prueba 
+print(f"\nCantidad de mensajes para entrenamiento: \n{len(xEntrenamiento)}")
+print(f"\nCantidad de mensajes para prueba: \n{len(xPrueba)}")
