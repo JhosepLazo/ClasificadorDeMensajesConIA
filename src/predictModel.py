@@ -7,11 +7,11 @@ rutaModelo = "modeloClasificador.pkl"
 #Cargamos el modelo entrenado desde el archivo
 modelo = joblib.load(rutaModelo)
 
-#Creamos un mensaje de prueba para clasificar
-mensajeprueba = "Quiero saber si tienen zapatos de talla 42"
+#Pedimos al usuario que ingrese un mensaje 
+mensajePrueba = input("Ingrese el mensaje del cliente: ")
 
 #Usamos el modelo para predecir la categoría del mensaje
-categoriaPredicha = modelo.predict([mensajeprueba])
+categoriaPredicha = modelo.predict([mensajePrueba])
 
 #Mostramos el mensaje y la categoría predicha
-print(f"Mensaje: {mensajeprueba} - Categoría Predicha: {categoriaPredicha[0]}")
+print(f"Mensaje: {mensajePrueba} - Categoría Predicha: {categoriaPredicha[0]}")
