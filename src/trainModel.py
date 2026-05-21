@@ -16,6 +16,11 @@ print(datosMensajes.shape)
 #Mostramos los nombres de las columnas del dataset
 print(datosMensajes.columns)
 
+#Contamos cuantas veces aparece cada categoría en el dataset
+conteoCategorias = datosMensajes['categoria'].value_counts()
+print("\nCantidad de mensajes por categorías:")
+print(conteoCategorias)
+
 
 
 
