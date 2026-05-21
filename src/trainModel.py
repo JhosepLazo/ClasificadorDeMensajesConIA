@@ -75,6 +75,14 @@ modelo.fit(xEntrenamiento, yEntrenamiento)
 #Mostramos un mensaje para confirmar que el entrenamiento terminó
 print("\nModelo entrenado correctamente.")
 
+#Usamos el modelo entrenado para predecir las categorías de los mensajes de prueba
+predicciones = modelo.predict(xPrueba)
+
+#Mostramos las primeras predicciones para revisar que el modelo ya responde 
+print("\nPredicciones para los primeros mensajes de prueba:")
+for i in range(10):
+    print(f"Mensaje: {xPrueba.iloc[i]} - Categoría Real: {yPrueba.iloc[i]} - Categoría Predicha: {predicciones[i]}\n")
+
 
 
 
