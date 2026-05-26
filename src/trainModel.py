@@ -63,7 +63,7 @@ def crearModelo():
             lowercase = True, #Convertir todo el texto a minúsculas para evitar duplicados
             strip_accents = 'unicode', #Eliminar acentos para mejorar la consistencia
             ngram_range = (1, 2), #Considerar tanto palabras individuales como pares de palabras para capturar más contexto
-            max_features = 1000 #Limitar el número de características para evitar sobreajuste
+            max_features = 1000, #Limitar el número de características para evitar sobreajuste
         )),
         #Segundo paso: Clasificar los mensajes utiizando regresión logística
         ('clasificador', LogisticRegression(
@@ -103,6 +103,7 @@ def guardarReportes(yPrueba, predicciones, etiquetas, exactitud):
     #Guardamos la matriz de confusión en formato CSV
     tablaMatrizConfusion.to_csv(rutaMatrizConfusion, encoding = 'utf-8')
 
+#Definimos la función principal para entrenar el modelo
 def entrenarModelo():
     #Cargamos el dataset limpio
     datosMensajes = cargaDataSet(rutaDataset)
