@@ -1,58 +1,43 @@
 # Clasificador Inteligente de Mensajes para Tienda
 
-Este proyecto se va a construir paso a paso con enfoque de aprendizaje.
+## Descripción
 
-La idea es crear un sistema que reciba mensajes de clientes y los clasifique en categorias como stock, reclamo, cambio/devolucion, pedido pendiente o consulta general.
+Este proyecto implementa un clasificador inteligente de mensajes para una tienda.  
+El sistema recibe mensajes escritos por clientes y los clasifica automáticamente en una categoría comercial.
 
-## Objetivo de esta etapa
-Por ahora el proyecto queda en una base minima para que puedas escribir el codigo tu mismo.
+## Categorías del modelo
 
-No hay modelo entrenado todavia.
-No hay demo web todavia.
-No hay scripts terminados todavia.
+| Categoría | Descripción |
+|---|---|
+| stock | Consulta de disponibilidad de productos |
+| reclamo | Reclamos por problemas con pedidos o atención |
+| cambio_devolucion | Solicitudes de cambio o devolución |
+| pedido_pendiente | Consultas sobre pedidos pendientes o envíos |
+| consulta_general | Preguntas generales sobre la tienda |
 
-Vamos a avanzar por partes y entendiendo cada linea.
+## Tecnologías utilizadas
 
-## Estructura actual
+- Python
+- pandas
+- scikit-learn
+- TF-IDF
+- Logistic Regression
+- joblib
+
+## Estructura del proyecto
+
 ```text
 ClasificadorDeMensajesConIA/
 ├── data/
 │   └── mensajes_clientes.csv
+├── models/
+│   └── modelo_clasificador.joblib
+├── reports/
+│   ├── metricas_modelo.txt
+│   └── matriz_confusion.csv
 ├── src/
+│   ├── train_model.py
+│   └── predict_message.py
+├── requirements.txt
 ├── .gitignore
 └── README.md
-```
-
-## Que contiene cada parte
-- `data/mensajes_clientes.csv`: dataset inicial con mensajes ficticios clasificados.
-- `src/`: carpeta donde escribiremos los scripts de Python.
-- `.gitignore`: archivo para evitar subir carpetas temporales como `.venv` o `__pycache__`.
-- `README.md`: explicacion del proyecto.
-
-## Categorias iniciales
-| Codigo | Significado |
-| --- | --- |
-| `stock` | Consulta de stock |
-| `reclamo` | Reclamo |
-| `cambio_devolucion` | Cambio o devolucion |
-| `pedido_pendiente` | Pedido pendiente |
-| `consulta_general` | Consulta general |
-
-## Proximo paso
-El primer archivo que escribiremos sera:
-
-```text
-src/train_model.py
-```
-
-Pero antes de programarlo, conviene entender estas preguntas:
-
-1. Como leer un archivo CSV con Python.
-2. Como separar mensajes y categorias.
-3. Que significa entrenar un modelo.
-4. Que hace TF-IDF.
-5. Que hace un clasificador.
-
-## Regla de trabajo
-Tu escribes el codigo.
-Yo te guio, reviso, explico y corrijo cuando lo necesites.
