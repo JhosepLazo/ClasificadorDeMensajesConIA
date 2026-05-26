@@ -1,0 +1,15 @@
+REPORTE DEL MODELO
+Exactitud del modelo: 0.74
+
+Reporte de clasificación:
+                   precision    recall  f1-score   support
+
+cambio_devolucion       0.78      0.70      0.74        10
+ consulta_general       0.75      0.60      0.67        10
+ pedido_pendiente       0.69      0.90      0.78        10
+          reclamo       0.86      0.60      0.71        10
+            stock       0.69      0.90      0.78        10
+
+         accuracy                           0.74        50
+        macro avg       0.75      0.74      0.73        50
+     weighted avg       0.75      0.74      0.73        50

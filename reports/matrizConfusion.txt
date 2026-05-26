@@ -1,0 +1,6 @@
+,cambio_devolucion,consulta_general,pedido_pendiente,reclamo,stock
+cambio_devolucion,7,2,1,0,0
+consulta_general,0,6,0,0,4
+pedido_pendiente,0,0,9,1,0
+reclamo,1,0,3,6,0
+stock,1,0,0,0,9

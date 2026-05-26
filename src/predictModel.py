@@ -1,8 +1,12 @@
+# Importamos Path para manejar rutas de archivos de forma segura.
+from pathlib import Path
+# Importamos argparse para recibir mensajes desde la consola.
+import argparse
 #Importamos joblib para cargar el modelo entrenado
 import joblib
 
 #Cargamos el modelo entrenado desde el archivo
-rutaModelo = "modeloClasificador.pkl"
+rutaModelo = "models/modeloClasificador.joblib"
 
 #Diccionario para mostrar nombres más amigables de las categorías
 nombresCategorias = {
